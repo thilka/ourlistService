@@ -17,7 +17,7 @@ const handlers = {
         const item = this.event.request.intent.slots.item.value;
         if (item) {
             addItem(item, (result) => {
-                this.emit(':ask', result + ' hinzugefügt.', 'Noch was?');                
+                this.emit(':ask', result, 'Noch was?');                
                 this.context.done();
             });
         } else {
