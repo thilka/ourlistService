@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "alexa-sdk": "^1.0.24",
+    "firebase": "^4.8.1",
     "request": "^2.83.0"
   }
 }
