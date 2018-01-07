@@ -11,11 +11,17 @@ const APP_ID = 'amzn1.ask.skill.cfb76dd2-a3c2-4805-b0a4-3a01c31ebce8';
 
 const handlers = {
     'LaunchRequest': function () {
-        this.emit(':ask', 'Füge einen neuen Eintrag der Liste hinzu', 'Füge einen neuen Eintrag der Liste hinzu');
+        this.emit(':ask', 'Was müssen wir einkaufen?', 'Was müssen wir einkaufen?');
     },
     'AddItem': function () {
-        const item = this.event.request.intent.slots.item.value;
-        if (item) {
+        const item1 = this.event.request.intent.slots.itemOne.value
+        var item = item1
+        if (item1) {
+            const item2 = this.event.request.intent.slots.itemTwo.value
+            if (item2) {
+                item = item1 + ' ' + item2
+            }
+
             addItem(item, (result) => {
                 this.emit(':ask', result, 'Noch was?');                
                 this.context.done();
@@ -25,7 +31,7 @@ const handlers = {
         }
     },
     'AMAZON.HelpIntent': function () {
-        this.emit(':ask', 'Füge einen neuen Eintrag der Liste hinzu', 'Füge einen neuen Eintrag der Liste hinzu');
+        this.emit(':ask', 'Was müssen wir einkaufen?', 'Was müssen wir einkaufen?');
     },
     'AMAZON.CancelIntent': function () {
         this.emit(':tell', 'Auf Wiedersehen!');
